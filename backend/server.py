@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, flash
 from datetime import datetime, timedelta
 from flask_cors import CORS
-from model import Reservation, connect_to_db, db
+from backend.model import Reservation, connect_to_db, db
 import crud
 
 app = Flask(__name__)
