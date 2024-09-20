@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, flash
 from datetime import datetime, timedelta
 from flask_cors import CORS
 from backend.model import Reservation, connect_to_db, db
-import crud
+import backend.crud
 
 app = Flask(__name__)
 app.secret_key = "dev"
