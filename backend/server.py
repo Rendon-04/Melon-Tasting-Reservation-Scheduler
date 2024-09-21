@@ -1,13 +1,17 @@
 from flask import Flask, jsonify, request, flash
 from datetime import datetime, timedelta
 from flask_cors import CORS
-from model import Reservation, connect_to_db, db
-import crud
+from backend.model import Reservation, connect_to_db, db
+import backend.crud
 
 app = Flask(__name__)
 app.secret_key = "dev"
 
 CORS(app)
+
+@app.route('/')
+def home():
+    return "Welcome to the Melon Tasting Reservation Scheduler!"
 
 @app.route("/register", methods=["POST"])
 def register():
