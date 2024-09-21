@@ -1,13 +1,24 @@
-from flask import Flask, jsonify, request, flash
+from flask import Flask, jsonify, request, flash, send_from_directory
 from datetime import datetime, timedelta
 from flask_cors import CORS
 from backend.model import Reservation, connect_to_db, db
 import backend.crud
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='build', static_url_path='')
 app.secret_key = "dev"
-
 CORS(app)
+
+# Serve the React frontend
+@app.route('/')
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
+
+# Serve other static files from the build folder
+@app.route('/<path:path>')
+def static_proxy(path):
+    return send_from_directory(app.static_folder, path)
+
+
 
 @app.route('/')
 def home():
