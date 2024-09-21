@@ -1,5 +1,5 @@
 """CRUD Operations"""
-from model import User, Reservation, db
+from backend.model import User, Reservation, db
 
 def get_user_by_username(username):
     """Get a user by their username.
