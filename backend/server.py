@@ -10,6 +10,10 @@ app.secret_key = "dev"
 
 CORS(app)
 
+@app.route('/')
+def home():
+    return "Welcome to the Melon Tasting Reservation Scheduler!"
+
 @app.route("/register", methods=["POST"])
 def register():
     """Register a new user."""
