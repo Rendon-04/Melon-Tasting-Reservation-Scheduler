@@ -8,21 +8,14 @@ app = Flask(__name__, static_folder='build', static_url_path='')
 app.secret_key = "dev"
 CORS(app)
 
-# Serve the React frontend
+
 @app.route('/')
 def serve():
     return send_from_directory(app.static_folder, 'index.html')
 
-# Serve other static files from the build folder
-@app.route('/<path:path>')
-def static_proxy(path):
-    return send_from_directory(app.static_folder, path)
-
-
-
-@app.route('/')
-def home():
-    return "Welcome to the Melon Tasting Reservation Scheduler!"
+# @app.route('/')
+# def home():
+#     return "Welcome to the Melon Tasting Reservation Scheduler!"
 
 @app.route("/register", methods=["POST"])
 def register():
